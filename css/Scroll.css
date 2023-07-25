@@ -1,0 +1,12 @@
+body {
+    overflow:hidden !important;
+}
+
+
+#element::-webkit-scrollbar {
+    display: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}

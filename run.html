@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>JD-Bingo</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+<div class="container">
+  <?php
+// Read the file contents into a string variable,
+// and parse the string into a data structure
+
+
+//echo "Boss hobbies: ".$data["CalledNumb"][0]."n";
+
+// Modify the value, and write the structure to a file "data_out.json"
+//
+$ValueSet = -1;
+if ((!isset($_POST["Value"] )) && ($_POST["Value"] == null)) {
+  echo ' ';
+} elseif (isset($_POST["Value"] )) {
+  $ValueSet = $_POST["Value"];
+  $ValueSet++;
+}
+
+$str_data1 = file_get_contents("update.json");
+$data1 = json_decode($str_data1,true);
+$data1["Reset"] = "0";
+$fh1 = fopen("update.json", 'w')
+      or die("Error opening output file");
+fwrite($fh1, json_encode($data1,JSON_UNESCAPED_UNICODE));
+fclose($fh1);
+
+
+
+$str_data = file_get_contents("update.json");
+$data = json_decode($str_data,true);
+$data["CalledNumb"][$ValueSet] = "1";
+$fh = fopen("update.json", 'w')
+      or die("Error opening output file");
+fwrite($fh, json_encode($data,JSON_UNESCAPED_UNICODE));
+fclose($fh);
+//echo $ValueSet;
+
+
+
+
+$ResetVal = $_POST["ResetVal"];
+if ($ResetVal == 1) {
+  $newfile = 'update.json';
+$file = 'replace/update.json';
+
+copy($file, $newfile);
+
+
+  $ResetVal = 0;
+
+}
+
+
+  ?>
+
+  <div class="row">
+       <div class="col s12"></div>
+       <div class="col s4"></div>
+       <div class="col s4">
+
+         <form action="run.php" method="post">
+       <input type="hidden" name="Value" value="<?php echo $ValueSet ?>">
+       <button class="waves-effect waves-light btn-large" type="submit" value="Reset">
+         Next Number
+       </button>
+       </form>
+
+     </div>
+       <div class="col s4"></div>
+     </div>
+
+     <div class="row">
+          <div class="col s12"></div>
+          <div class="col s4"></div>
+          <div class="col s4">
+
+            <form action="run.php" method="post">
+            <input type="hidden" name="ResetVal" value="1">
+            <button class="waves-effect waves-light btn-large" type="submit" value="Reset">
+              Reset
+            </button>
+            </form>
+
+          </div>
+          <div class="col s4"></div>
+        </div>
+<!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="js/materialize.js"></script>
+<script src="js/init.js"></script>
+</div>
+</body>
+</html>

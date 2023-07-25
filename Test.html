@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>JD-Bingo</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+
+<body>
+
+
+
+<button id="NextNum" class="waves-effect waves-light btn-large" type="submit" value="Reset">
+  Next Number
+</button>
+
+<button id="ResetApp" class="waves-effect waves-light btn-large" type="submit" value="Reset">
+  Reset
+</button>
+
+
+
+<script>
+let CallVal = 0;
+$("#NextNum").click(function(){
+
+  myVar.CalledNumb[CallVal] = "1";
+    myVar.Reset = "0";
+  localStorage['Bingo'] = JSON.stringify(myVar);
+  CallVal++;
+});
+
+$("#ResetApp").click(function(){
+CallVal = 0;
+
+  var i;
+  for (i = 0; i < myVar.CalledNumb.length; i++) {
+      myVar.CalledNumb[i] = "0";
+  }
+
+
+    myVar.Reset = "1";
+  localStorage['Bingo'] = JSON.stringify(myVar);
+});
+
+let myVar = {"CalledNumb":["0","0"],"Paused":"0","Reset":"1"};
+
+localStorage['Bingo'] = JSON.stringify(myVar);
+
+var stored = localStorage['Bingo'];
+if (stored) myVar = JSON.parse(stored);
+else myVar = {a:'Son', b: [3, 2, 1]};
+
+
+ $("#Party").html( myVar.CalledNumb[0] );
+
+
+</script>
+
+
+<!--  Scripts-->
+
+<script src="js/materialize.js"></script>
+<script src="js/init.js"></script>
+
+</body>
+</html>

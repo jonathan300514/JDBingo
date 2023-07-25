@@ -1,0 +1,128 @@
+/* Custom Stylesheet */
+body {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  background-color: #E0E0E0 !important;
+}
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+.thisContainer {
+  padding-left: 250px;
+  padding-right: 250px;
+}/*media query this to anything below 250*/
+.thatContainer {
+  padding-left: 350px;
+  padding-right: 350px;
+}/*media query this to anything below 350*/
+
+th.grid {
+  font-Size: 44px;
+  text-align: center;
+}
+.scheme {
+  background-color: transparent;
+  border: 2px solid #03a9f4;
+  border-radius: 15px;
+  margin-top: 90px;
+}
+.altScheme {
+  background-color: transparent;
+  border: 2px solid #03a9f4;
+  border-radius: 15px;
+  height: 100px;
+  width: 100px;
+  padding: 17px;
+  margin-bottom: 15px;
+  margin-left: 25%;
+}
+
+.testing {
+  margin: 0px;
+  float: right;
+  font-size: 22px;
+  margin-right: -10px;
+}
+.testing2 {
+  text-align: center;
+  margin: 0px;
+}
+.testing3 {
+  float: left;
+  margin: none;
+}
+
+h1.CalledNumber {
+  color: black;
+}
+
+h1 {
+  font-size: 4em;
+  margin: 0.20em 0 !important;
+}
+
+
+/*HOVER.CSS*/
+/* Pulse */
+@-webkit-keyframes hvr-pulse {
+  25% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  75% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+@keyframes hvr-pulse {
+  25% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  75% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+.hvr-pulse {
+
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  animation: 5s;
+  animation-iteration-count: infinite;
+  -webkit-animation-name: hvr-pulse;
+  animation-name: hvr-pulse;
+  -webkit-animation-duration: 3s;
+  animation-duration: 3s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+.modal {
+   max-height: 100%;
+    min-height: 100%;
+    min-width: 100%;
+}
+
+.RandModal {
+    max-height: 100%;
+     min-height: 100%;
+     min-width: 100%;
+         margin-top: 0px;
+         top:0px !important;
+         text-align: center;
+}
+
+.Rand {
+  padding: 50% 35%;
+  border-top: 500px;
+
+}

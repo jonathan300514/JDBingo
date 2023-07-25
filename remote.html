@@ -1,0 +1,567 @@
+<?php
+
+$PageAddress = "https://www.jd-sh.co.uk/dj/index.php";
+$PageTitle = "JD-Bingo";
+$Keywords = "HTML,CSS,XML,JavaScript,PHP,Bingo,Web-App";
+$PageDisc = "A simple bingo app allowing remote control from secondary device";
+$FrontImgAddress = "https://www.jd-sh.co.uk/dj/assets/download.jpg";
+$TwitterTag = "@jonathan300514";
+$CreateTime = "2018-12-29T00:23:00+01:00";
+$EditTime = "2018-04-29T00:23:00+01:00";
+$LogoImg = "https://www.jd-sh.co.uk/dj/assets/thelogo.png";
+
+?>
+<!DOCTYPE html>
+
+
+<html itemscope itemtype="<?php echo $PageAddress ?>" lang="en">
+
+	<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+	  <title><?php echo $PageTitle ?></title>
+    <meta name="keywords" content="<?php echo $Keywords ?>">
+
+	   <!-- Update your HtMl tag to include the itemscope and itemtype attributes. -->
+
+	<!-- Place this data between the <head> tags of your website -->
+
+	<meta name="description" content="<?php echo $PageDisc ?>"/>
+	<!-- Schema.org markup for Google+ -->
+	<meta itemprop="name" content="<?php echo $PageTitle ?>"/>
+	<meta itemprop="description" content="<?php echo $PageDisc ?>"/>
+	<meta itemprop="image" content="<?php echo $FrontImgAddress ?>"/>
+	<!-- Twitter Card data -->
+	<meta name="twitter:card" content="summary_large_image"/>
+	<meta name="twitter:site" content="<?php echo $TwitterTag ?>"/>
+	<meta name="twitter:title" content="<?php echo $PageTitle ?>"/>
+	<meta name="twitter:description" content="<?php echo $PageDisc ?>"/>
+	<meta name="twitter:creator" content="<?php echo $TwitterTag ?>"/>
+	<!-- Twitter summary card with large image must be at least 280x150px -->
+	<meta name="twitter:image:src" content="<?php echo $FrontImgAddress ?>"/>
+	<!-- Open Graph data -->
+	<meta property="og:title" content="<?php echo $PageTitle ?>"/>
+	<meta property="og:type" content="website"/>
+	<meta property="og:url" content="<?php echo $PageAddress ?>"/>
+	<meta property="og:image" content="<?php echo $FrontImgAddress ?>"/>
+	<meta property="og:description" content="<?php echo $PageDisc ?>"/>
+	<meta property="og:site_name" content="<?php echo $PageTitle ?>"/>
+	<meta property="article:published_time" content="<?php echo $CreateTime ?>"/>
+	<meta property="article:modified_time" content="<?php echo $EditTime ?>"/>
+	<meta property="article:section" content="Article Section"/>
+	<meta property="article:tag" content="Article Tag"/>
+	<!-- DEVICE ICONS -->
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link rel="icon" href="<?php echo $LogoImg ?>">
+	<link rel="shortcut icon" href="<?php echo $LogoImg ?>" />
+	<link rel="apple-touch-icon" href="<?php echo $LogoImg ?>"/>
+	<link rel="apple-touch-icon-precomposed" href="<?php echo $LogoImg ?>"/>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script>
+ $(document).ready(function(){
+    $('.modal').modal();
+  });
+        </script>
+
+</head>
+<body>
+	<div class="container">
+
+		<button data-target="modal1" class="btn modal-trigger" style="margin:15px; margin-left: 45%;"><i class="large material-icons">restore</i></button>
+     <div class="row">
+
+          <div class="col s6 offset-s3">
+
+
+
+						<div class="altScheme">
+							<!-- current called number -->
+							<h1 id="Call" class="testing2">00</h1>
+							<!--Last number Called -->
+							<p id="LCall" class="testing">00</p>
+							<!--Count of numbers Called.-->
+							<p id="NumsCall" class="testing" style="float: left; margin-left: -10px;">0</p>
+						</div>
+
+						<div class="row">
+
+							<div class="col s3 m6 l6">
+								<button id="NextNum" class="waves-effect waves-light btn-large" type="submit" value="Next" style="margin-left: 50%;">
+			            <i class="large material-icons">arrow_forward</i>
+			          </button>
+							</div><!-- col end -->
+
+							<div class="col s3 m6 l6">
+								<label>Auto Call</label>
+								<div class="switch">
+									<label>
+										<input type="checkbox" id="Auto">
+										<span class="lever"></span>
+									</label>
+								</div>
+							</div><!-- col end -->
+
+						</div><!-- inner row end -->
+
+            <button data-target="modal2" class="btn modal-trigger" style="margin-left: 23%;">Numbers Called</button>
+            <br><br>
+
+						<br><br>
+						<div align="center">
+							<button id="Bingos" class="waves-effect waves-light btn-large" stlye="margin-left: 50%">Bingo</button>
+						</div>
+						<br><br>
+
+						<div align="center">
+							<button id="Rand" class="waves-effect waves-light btn-large" stlye="margin-left: 50%">Random</button>
+							<button id="RandShow" class="waves-effect waves-light btn-large" stlye="margin-left: 50%">Show Random</button>
+
+
+  Starting Number: <input type="number" id="StrNum"><br>
+  Ending Number: <input type="number" id="EndNum"><br>
+	<button id="RandNumbers">Submit</button>
+
+<button id="ResetRand">Reset Random</button>
+						</div>
+
+
+						<br><br>
+						<!--<button id="Auto" class="waves-effect waves-light btn-large"><i class="large material-icons">play</i></button> maybe use an if to replace with a pause? -->
+
+            <!-- Modal Structure -->
+            <div id="modal1" class="modal">
+              <div class="modal-content">
+                <h5 align="center">Are you sure you wish to reset?</h5>
+
+              </div>
+              <div class="modal-footer">
+                <button href="#!" id="ResetApp" type="submit" value="Reset" class="modal-close waves-effect waves-blue btn-flat">Reset</button>
+                <a href="#!" class="modal-close waves-effect waves-red btn-flat">Return</a>
+              </div>
+            </div>
+
+
+
+          </div><!-- row end -->
+          <div class="col s4"></div>
+        </div>
+
+
+<!--  Scripts-->
+<script>
+	let CallVal = 0;
+	let Bingo1 = 0;
+
+
+	/*Auto Click function*/
+
+	let AutoClickVal = 0;
+	let AutoClickSet = 0;
+	let tid1;
+
+
+	$("#Auto").click(function(){
+
+	if ((AutoClickSet == 1) && (AutoClickVal != 0)) {
+	 AutoClickVal = 0;
+	 AutoClickSet = 0;
+	 $("#Auto").css("background-color", "#D0D0D0");
+	} else {
+	AutoClickVal = 1;
+	AutoClickSet = 1;
+	$("#Auto").css("background-color", "#49ee07");
+		}
+
+		if (AutoClickVal == 1) {
+		  tid1 = setInterval(AutoClick, 3000); /*AutoPlay speed value increase the number to slow the speed.*/
+	 } else {
+	 	clearInterval(tid1);
+	 }
+	});
+
+
+
+
+
+	function AutoClick() {
+		$('#NextNum').trigger('click');
+	}
+
+
+
+
+
+
+
+	/*Auto Click function*/
+	function ClickDis() {
+$( "#NextNum" ).prop( "disabled", true );
+setTimeout(ClickEN, 1000);
+
+}
+
+
+function ClickEN() {
+$( "#NextNum" ).prop( "disabled", false );
+}
+
+
+	$("#NextNum").click(function(){
+	  myVar.CalledNumb[CallVal] = "1";
+	    myVar.Reset = "0";
+	  localStorage['Bingo'] = JSON.stringify(myVar);
+	  CallVal++;
+	   $("#NumsCall").html( CallVal );
+ClickDis();
+	});
+
+	$("#ResetApp").click(function(){
+		clearInterval(tid);
+	CallVal = 0;
+	$("#Call").html( "00" );
+	$("#LCall").html( "00" );
+	$("#NumsCall").html( CallVal );
+
+
+	if (AutoClickVal == 1) {
+		$('#Auto').trigger('click');
+		$("#Auto").prop("checked", false);
+
+	}
+
+	  var i;
+	  for (i = 0; i < myVar.CalledNumb.length; i++) {
+	      myVar.CalledNumb[i] = "0";
+	  }
+
+	var k = 1;
+	  while (k < 91) {
+	    $("#" + k).css("color", "#000000");
+	    k++;
+	}
+			Bingo1 = "0";
+			myVar.BingoCall = "0";
+	    myVar.Reset = "1";
+	    myVar.NumCalled = "00";
+	    myVar.LCalled = "00";
+			myVar.RandNum = "0";
+			AutoClickVal = 0;
+			AutoClickSet = 0;
+
+
+
+
+	  localStorage['Bingo'] = JSON.stringify(myVar);
+tid = setInterval(loadDoc, 100);
+	});
+
+	let myVar = {"CalledNumb":["0","0"],"Paused":"0","Reset":"1","NumCalled":"00","LCalled":"00","BingoCall":"0","RandNum":"0","ShowRand":"0"};
+	let BingoSet = 0;
+	localStorage['Bingo'] = JSON.stringify(myVar);
+
+	var stored = localStorage['Bingo'];
+	if (stored) myVar = JSON.parse(stored);
+	else myVar = {a:'Son', b: [3, 2, 1]};
+
+
+	 $("#Party").html( myVar.CalledNumb[0] );
+
+	 $("#Bingos").click(function(){
+		 if (BingoSet == 1) {
+		 	Bingo1 = 0;
+			BingoSet = 0;
+		} else {
+	 Bingo1 = 1;
+	 BingoSet = 1;
+	}
+	});
+
+
+
+var Rand = 0;
+var RandSet = 0;
+
+
+
+$("#Rand").click(function(){
+	if (RandSet == 1) {
+
+	 Rand = 0;
+	 RandSet = 0;
+ } else {
+Rand = 1;
+RandSet = 1;
+}
+});
+
+
+var minNumber = 10;
+var maxNumber = 20;
+
+
+$("#ResetRand").click(function(){
+CalRand = [];
+});
+
+
+$("#RandNumbers").click(function(){
+	minNumber = $('#StrNum').val()*1;
+	maxNumber = $('#EndNum').val()*1;
+	maxNumber = (maxNumber + 1);
+	//console.log(maxNumber);
+});
+
+
+
+var RandShow = 0;
+var RandShowSet = 0;
+
+
+$("#RandShow").click(function(){
+	if (RandShowSet == 1) {
+
+	 RandShow = 0;
+	 RandShowSet = 0;
+ } else {
+RandShow = 1;
+RandShowSet = 1;
+}
+});
+
+
+
+
+
+
+
+
+var randomNumber;
+
+var CalRand = [];
+
+function randGen(){
+
+
+	function getRandomInteger(min, max) {
+	  min = Math.ceil(min);
+	  max = Math.floor(max);
+	  return Math.floor(Math.random() * (max - min)) + min;
+	}
+
+randomNumber = getRandomInteger(minNumber, maxNumber);;
+
+
+if(jQuery.inArray(randomNumber, CalRand) != -1) {
+    randGen();
+		//console.log("is in array");
+} else {
+    CalRand.push(randomNumber);
+}
+
+
+
+
+//console.log(randomNumber);
+Rand = 0;
+RandSet = 0;
+}
+
+
+
+
+
+
+
+
+
+	 // set interval
+	 var tid = setInterval(loadDoc, 100);
+
+	 function loadDoc() {
+
+	   var stored = localStorage['Bingo'];
+	   if (stored) myVar = JSON.parse(stored);
+	   else myVar = {a:'Son', b: [3, 2, 1]};
+
+		if (Bingo1 == 1) {
+		 myVar.BingoCall = "1";
+		 localStorage['Bingo'] = JSON.stringify(myVar);
+
+		 $("#Bingos").css("background-color", "#03a9f4");
+	 }
+
+		 if (Bingo1 == 0) {
+			myVar.BingoCall = "0";
+		 	localStorage['Bingo'] = JSON.stringify(myVar);
+
+			$("#Bingos").css("background-color", "transparent");
+		}
+
+		if (Rand == 1) {
+randGen();
+		 myVar.RandNum = randomNumber;
+		 localStorage['Bingo'] = JSON.stringify(myVar);
+		 $("#Rand").css("background-color", "#03a9f4");
+		}
+
+		if (RandShow == 1) {
+
+		 myVar.ShowRand = "1";
+		 localStorage['Bingo'] = JSON.stringify(myVar);
+		 $("#RandShow").css("background-color", "#03a9f4");
+		}
+		if (RandShow == 0) {
+
+		 myVar.ShowRand = "0";
+		 localStorage['Bingo'] = JSON.stringify(myVar);
+		 $("#RandShow").css("background-color", "transparent");
+		}
+
+
+	 $("#Call").html( myVar.NumCalled );
+	 $("#LCall").html( myVar.LCalled );
+	 $("#" + myVar.NumCalled).css("color", "#03a9f4");
+
+
+	 }
+
+</script>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="js/materialize.js"></script>
+<script src="js/init.js"></script>
+</div>
+
+<!-- Modal Structure Called numbers grid-->
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+<style>
+th.grid{
+color: #000000;
+}
+</style>
+            <table style="width:100%;" align="center">
+              <tr>
+                <th class="grid" id="1">1</th>
+                <th class="grid" id="2">2</th>
+                <th class="grid" id="3">3</th>
+                <th class="grid" id="4">4</th>
+                <th class="grid" id="5">5</th>
+                <th class="grid" id="6">6</th>
+                <th class="grid" id="7">7</th>
+                <th class="grid" id="8">8</th>
+                <th class="grid" id="9">9</th>
+                <th class="grid" id="10">10</th>
+              </tr>
+              <tr>
+                <th class="grid" id="11">11</th>
+                <th class="grid" id="12">12</th>
+                <th class="grid" id="13">13</th>
+                <th class="grid" id="14">14</th>
+                <th class="grid" id="15">15</th>
+                <th class="grid" id="16">16</th>
+                <th class="grid" id="17">17</th>
+                <th class="grid" id="18">18</th>
+                <th class="grid" id="19">19</th>
+                <th class="grid" id="20">20</th>
+              </tr>
+              <tr>
+                <th class="grid" id="21">21</th>
+                <th class="grid" id="22">22</th>
+                <th class="grid" id="23">23</th>
+                <th class="grid" id="24">24</th>
+                <th class="grid" id="25">25</th>
+                <th class="grid" id="26">26</th>
+                <th class="grid" id="27">27</th>
+                <th class="grid" id="28">28</th>
+                <th class="grid" id="29">29</th>
+                <th class="grid" id="30">30</th>
+              </tr>
+              <tr>
+                <th class="grid" id="31">31</th>
+                <th class="grid" id="32">32</th>
+                <th class="grid" id="33">33</th>
+                <th class="grid" id="34">34</th>
+                <th class="grid" id="35">35</th>
+                <th class="grid" id="36">36</th>
+                <th class="grid" id="37">37</th>
+                <th class="grid" id="38">38</th>
+                <th class="grid" id="39">39</th>
+                <th class="grid" id="40">40</th>
+              </tr>
+              <tr>
+                <th class="grid" id="41">41</th>
+                <th class="grid" id="42">42</th>
+                <th class="grid" id="43">43</th>
+                <th class="grid" id="44">44</th>
+                <th class="grid" id="45">45</th>
+                <th class="grid" id="46">46</th>
+                <th class="grid" id="47">47</th>
+                <th class="grid" id="48">48</th>
+                <th class="grid" id="49">49</th>
+                <th class="grid" id="50">50</th>
+              </tr>
+              <tr>
+                <th class="grid" id="51">51</th>
+                <th class="grid" id="52">52</th>
+                <th class="grid" id="53">53</th>
+                <th class="grid" id="54">54</th>
+                <th class="grid" id="55">55</th>
+                <th class="grid" id="56">56</th>
+                <th class="grid" id="57">57</th>
+                <th class="grid" id="58">58</th>
+                <th class="grid" id="59">59</th>
+                <th class="grid" id="60">60</th>
+              </tr>
+              <tr>
+                <th class="grid" id="61">61</th>
+                <th class="grid" id="62">62</th>
+                <th class="grid" id="63">63</th>
+                <th class="grid" id="64">64</th>
+                <th class="grid" id="65">65</th>
+                <th class="grid" id="66">66</th>
+                <th class="grid" id="67">67</th>
+                <th class="grid" id="68">68</th>
+                <th class="grid" id="69">69</th>
+                <th class="grid" id="70">70</th>
+              </tr>
+              <tr>
+                <th class="grid" id="71">71</th>
+                <th class="grid" id="72">72</th>
+                <th class="grid" id="73">73</th>
+                <th class="grid" id="74">74</th>
+                <th class="grid" id="75">75</th>
+                <th class="grid" id="76">76</th>
+                <th class="grid" id="77">77</th>
+                <th class="grid" id="78">78</th>
+                <th class="grid" id="79">79</th>
+                <th class="grid" id="80">80</th>
+              </tr>
+              <tr>
+                <th class="grid" id="81">81</th>
+                <th class="grid" id="82">82</th>
+                <th class="grid" id="83">83</th>
+                <th class="grid" id="84">84</th>
+                <th class="grid" id="85">85</th>
+                <th class="grid" id="86">86</th>
+                <th class="grid" id="87">87</th>
+                <th class="grid" id="88">88</th>
+                <th class="grid" id="89">89</th>
+                <th class="grid" id="90">90</th>
+              </tr>
+            </table>
+
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Hide</a>
+    </div>
+  </div>
+
+</body>
+</html>

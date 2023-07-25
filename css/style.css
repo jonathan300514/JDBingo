@@ -38,7 +38,8 @@ th.grid {
   width: 100px;
   padding: 17px;
   margin-bottom: 15px;
-  margin-left: 25%;
+      margin: auto;
+    text-align: center;
 }
 
 .testing {
